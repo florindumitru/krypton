@@ -33,10 +33,10 @@ title: Home
                         <h2 class="subtitle is-5 is-light is-thin">Price: <p id="priceLabel"></p> </h2>
                         <h2>
                         <script>async function getPrice() {
-
+                            
                             const response = await fetch('https://api.1inch.exchange/v3.0/56/quote?fromTokenAddress=0xf07897c018b6dd66d37da2f342a2e30e2dc82ed7&toTokenAddress=0xe9e7cea3dedca5984780bafc599bd69add087d56&amount=100000000000000000');
                             const json = await response.json();
-
+                            console.log("------------", json);
                             var toTokenAmount = parseInt(json.toTokenAmount);
                             var fromTokenAmount = parseInt(json.fromTokenAmount);
                             var price = toTokenAmount / fromTokenAmount;
@@ -44,6 +44,7 @@ title: Home
                             priceLabel.textContent = price; 
                         }
                         getPrice();
+                        setInterval(getPrice, 30000);
                         </script>
                         </h2>
                         <h2 class="subtitle is-5 is-light is-thin">Address: <a href="https://bscscan.com/address/0xf07897c018b6dd66d37da2f342a2e30e2dc82ed7">0xf07897c018b6dd66d37da2f342a2e30e2dc82ed7</a></h2>
