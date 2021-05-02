@@ -30,6 +30,23 @@ title: Home
                         <h2 class="subtitle is-5 is-light is-thin">
                             Cryptocurrency brought to the next level. Join our ICO for supercharged rates.
                         </h2>
+                        <h2 class="subtitle is-5 is-light is-thin">Price: <p id="priceLabel"></p> </h2>
+                        <h2>
+                        <script>async function getPrice() {
+
+                            const response = await fetch('https://api.1inch.exchange/v3.0/56/quote?fromTokenAddress=0xf07897c018b6dd66d37da2f342a2e30e2dc82ed7&toTokenAddress=0xe9e7cea3dedca5984780bafc599bd69add087d56&amount=100000000000000000');
+                            const json = await response.json();
+
+                            var toTokenAmount = parseInt(json.toTokenAmount);
+                            var fromTokenAmount = parseInt(json.fromTokenAmount);
+                            var price = toTokenAmount / fromTokenAmount;
+                            var priceLabel = document.getElementById("priceLabel");
+                            priceLabel.textContent = price; 
+                        }
+                        getPrice();
+                        </script>
+                        </h2>
+                        <h2 class="subtitle is-5 is-light is-thin">Address: <a href="https://bscscan.com/address/0xf07897c018b6dd66d37da2f342a2e30e2dc82ed7">0xf07897c018b6dd66d37da2f342a2e30e2dc82ed7</a></h2>
                         <!-- CTA -->
                         <p class="buttons">
                             <a href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0xf07897C018B6Dd66D37Da2F342a2e30E2dC82Ed7" class="button k-button k-primary raised has-gradient is-fat is-bold">
